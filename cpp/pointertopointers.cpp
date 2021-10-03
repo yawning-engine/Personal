@@ -7,5 +7,12 @@ using namespace std;
 
 int main()
 {
-	cout<<"hello";
+	int n,q;
+	int i,j,m;
+	cin>>n>>q;
+	int **nums = new int*[n];
+	for(i=0;i<n;i++)
+	{
+		
+	}
 }
