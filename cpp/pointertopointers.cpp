@@ -14,5 +14,6 @@ int main()
 	for(i=0;i<n;i++)
 	{
 		cin>>m;	
+		*nums[i] = new int[m]
 	}
 }
