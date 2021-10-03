@@ -38,8 +38,10 @@ int main()
 	}
 	for(i=0;i<q[0];i++)
 	{
-		cout<<obuff[i]<<"\n";
+		cout<<obuff[i]<<endl;
 	}
+	delete[] obuff;
+	delete[] *nums;
 	
 	return 0;
 }
