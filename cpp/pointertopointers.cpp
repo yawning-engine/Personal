@@ -15,26 +15,16 @@ int main()
 	{
 		cin>>m;	
 		nums[i] = new int[m];
-		nums[i][0] = m;
-		for (j=1;j<=m;j++)
+		for (j=0;j<m;j++)
 		{
 			cin>>nums[i][j];
 		}
 	}
-/*	for(i=0;i<n;i++)
-	{
-		for (j=1;j<=nums[i][0];j++)
-		{
-			cout<<nums[i][j]<<" ";
-		}
-		cout<<"\n";
-	} 
-*/
 	for(i=0;i<q[0];i++)
 	{
 		cin>>q[1]>>q[2];
 		
-		obuff[i] = nums[q[1]][q[2]+1]; 	
+		obuff[i] = nums[q[1]][q[2]]; 	
 	}
 	for(i=0;i<q[0];i++)
 	{
