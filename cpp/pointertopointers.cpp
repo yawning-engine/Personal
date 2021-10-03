@@ -13,6 +13,6 @@ int main()
 	int **nums = new int*[n];
 	for(i=0;i<n;i++)
 	{
-		
+		cin>>m;	
 	}
 }
