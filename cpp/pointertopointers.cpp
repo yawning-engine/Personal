@@ -7,9 +7,9 @@ using namespace std;
 
 int main()
 {
-	int n,q;
-	int i,j,m;
-	cin>>n>>q;
+	int n,q[3],i,j,m;
+	cin>>n>>q[0];
+	int *obuff = new int[n];
 	int **nums = new int*[n];
 	for(i=0;i<n;i++)
 	{
@@ -21,14 +21,25 @@ int main()
 			cin>>nums[i][j];
 		}
 	}
-	for(i=0;i<n;i++)
+/*	for(i=0;i<n;i++)
 	{
 		for (j=1;j<=nums[i][0];j++)
 		{
 			cout<<nums[i][j]<<" ";
 		}
 		cout<<"\n";
+	} 
+*/
+	for(i=0;i<q[0];i++)
+	{
+		cin>>q[1]>>q[2];
+		
+		obuff[i] = nums[q[1]][q[2]+1]; 	
+	}
+	for(i=0;i<q[0];i++)
+	{
+		cout<<obuff[i]<<"\n";
 	}
 	
-
+	return 0;
 }
