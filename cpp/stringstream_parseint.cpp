@@ -11,9 +11,9 @@ void parseInts(string str)
 	string temp;
 	while(getline(ss,temp,','))
 	{
-		//num = int(temp);
+		num = stoi(temp);
 		//nums.push_back(temp);
-		cout<<temp;
+		cout<<num<<endl;
 	}
 	/*for(i=0;i<nums.size();i++)
 		cout<<nums[i];*/
