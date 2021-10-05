@@ -15,8 +15,9 @@ vector<int> parseInts(string str)
 		nums.insert(nums.end(),num);
 		//cout<<num<<endl;
 	}
-	for(i=0;i<nums.size();i++)
-		cout<<nums[i];
+	/*for(i=0;i<nums.size();i++)
+		cout<<nums[i]<<endl;*/
+	return nums;
 	
 }
 
@@ -25,10 +26,10 @@ int main()
 	string str;
 	cin >> str;
 	vector<int> integers = parseInts(str);
-	/*for(int i = 0; i < integers.size(); i++) 
+	for(int i = 0; i < integers.size(); i++) 
 	{
 		cout << integers[i] << "\n";
-	}*/
+	}
     
 	return 0;
 }
