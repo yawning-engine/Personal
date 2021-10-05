@@ -3,21 +3,20 @@
 #include <iostream>
 using namespace std;
 
-vector<int> parseInts(string str) 
+void parseInts(string str) 
 {
-	stringstream ss;
-	vector<int> nums;
+	stringstream ss(str);
+	vector<string> nums;
 	int i,num;
 	string temp;
-	ss << str;
 	while(getline(ss,temp,','))
 	{
 		//num = int(temp);
-		//nums.push_back(num);
+		//nums.push_back(temp);
 		cout<<temp;
 	}
-	for(i=0;i<nums.size();i++)
-		cout<<nums[i];
+	/*for(i=0;i<nums.size();i++)
+		cout<<nums[i];*/
 	
 }
 
@@ -25,11 +24,11 @@ int main()
 {
 	string str;
 	cin >> str;
-	vector<int> integers = parseInts(str);
-	for(int i = 0; i < integers.size(); i++) 
+	parseInts(str);
+	/*for(int i = 0; i < integers.size(); i++) 
 	{
 		cout << integers[i] << "\n";
-	}
+	}*/
     
 	return 0;
 }
