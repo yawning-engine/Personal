@@ -22,7 +22,7 @@ int main() {
     for(i=0,line=query[i];i<q;i++)
     {
     	vpos = line.find('~');
-    	value = line.substr(vpos); //value of the attribute to be found
+    	value = line.substr(vpos+1); //value of the attribute to be found
     	tpos = 0;
     	for(j=0;line[j] != '~';j++) //pos of supertag in case of nested tags
     	{
