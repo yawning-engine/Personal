@@ -10,7 +10,7 @@ using namespace std;
 int main() 
 {
 
-    string tags[20], query[20],searchorder[20],line,value,tag,tagstack[20],findval;
+    string tags[20], query[20],searchorder[20],line,value,tag,tagstack[20],findval,validarg;
     int n,q,i,j,k,ts,tpos,vpos,dotcount;
     
     cin>>n>>q;
@@ -56,10 +56,21 @@ int main()
 							if(tags[j].find(value) != -1)
 							{
 								vpos = tags[j].find(value);
-								findval =tags[j].substr(vpos + value.length() + 4);
-								cout<<findval.substr(0,findval.find("\""))<<endl;
-								break;
+								findval = tags[j].substr(vpos + value.length() + 4);
+								validarg = tags[j].substr(vpos-1,value.length()+2);
+								if(validarg == " " + value + " ")
+								{
+									cout<<findval.substr(0,findval.find("\""))<<endl;
+									break;
+								}
+								else
+								{
+									cout<<"Not Found!"<<endl;
+									break;
+								
+								}
 							}
+							
 							else
 							{
 								cout<<"Not Found!"<<endl;
