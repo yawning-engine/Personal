@@ -7,22 +7,24 @@
 using namespace std;
 
 
-int main() {
-    string tags[20], query[20],searchorder[20],line,value,tag,tagstack[20];
-    int n,q,i,j,k,ts,tpos,dotcount;
+int main() 
+{
+
+    string tags[20], query[20],searchorder[20],line,value,tag,tagstack[20],findval;
+    int n,q,i,j,k,ts,tpos,vpos,dotcount;
+    
     cin>>n>>q;
+    
     for(i=0;i<n;i++)
     {
     	getline(cin,tags[i],'>');
     }
+    
     for(i=0;i<q;i++)
     {
     	cin>>query[i];
     }
-/*        for(i=0;i<tagnum;i++)
-    {
-    	cout<<tagnames[i]<<endl;
-    } */
+    
     for(i=0;i<q;i++)
     {
     	line=query[i];
@@ -33,7 +35,7 @@ int main() {
     	{
 		if(line[j] == '.')
 		{
-			searchorder[dotcount] = line.substr(tpos,j);
+			searchorder[dotcount] = line.substr(tpos,j-tpos);
 			tpos = j+1;
 			dotcount++;
 		}
@@ -41,7 +43,7 @@ int main() {
     	}
     	searchorder[dotcount]=line.substr(tpos,line.find('~')-tpos);
     	tag = "<" + searchorder[dotcount];
-    	for(j=n-1,k=0;j>=0;j++)
+    	for(j=n-1,k=0;j>=0;j--)
     	{
 		if(tags[j].find(tag) != -1)
 		{
@@ -53,7 +55,9 @@ int main() {
 						{
 							if(tags[j].find(value) != -1)
 							{
-								cout<<tags[j].substr(tags[j].find(value),tags[j].find("/")-tags[j].find(value))<<endl;
+								vpos = tags[j].find(value);
+								findval =tags[j].substr(vpos + value.length() + 4);
+								cout<<findval.substr(0,findval.find("\""))<<endl;
 								break;
 							}
 							else
@@ -70,10 +74,11 @@ int main() {
 					break;
 				}
 			}
+			break;
 		}
 		if(tags[j].find("/") != -1)
 		{
-			tagstack[k]=tags[j].substr(tags[j].find("/"),tags[j].find(" ")-tags[j].find("/"));
+			tagstack[k]=tags[j].substr(tags[j].find("/")+1,tags[j].find(" ")-tags[j].find("/")+1);
 			k++;
 		}
 		else
