@@ -50,16 +50,16 @@ int main() {
     				found = 1;
     				size++;
     			}
-    			if ((size <= dotcount) && (found = 1))
+    			if ((size <= dotcount) && (found == 1))
     				break;
-    			if ((size > dotcount) && (found = 0))
+    			if ((size > dotcount) && (found == 0))
     			{
     				cout<<"Not Found!"<<endl;
     				break;
     			}
-    			if ((size > dotcount) && (found = 1))
+    			if ((size > dotcount) && (found == 1))
     			{
-    				if(tags[k].find(tag)==0)
+    				if(tags[k].find(tag) != -1)
     				{
     					vpos = tags[k].find(value);
     					if((vpos >= 0) && (vpos < tags[k].length()))
