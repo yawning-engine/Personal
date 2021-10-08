@@ -37,15 +37,15 @@ int main() {
 		
     	
     	}
-    	searchorder[dotcount]=line.substr(tpos,line.find('~'));
+    	searchorder[dotcount]=line.substr(tpos,line.find('~')-tpos);
     	tag = "<" + searchorder[dotcount];
     	for(j=0;j<=dotcount;j++)
     	{
-    		endtag = "</" + searchorder[j] + ">";
+    		endtag = "</" + searchorder[j];
     		found=0;
     		for(k=n-1;k>=0;k--)
     		{
-    			if(tags[k].find(endtag) == 0) 
+    			if(tags[k].find(endtag) != -1) 
     			{
     				found = 1;
     				size++;
