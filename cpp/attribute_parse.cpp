@@ -32,6 +32,7 @@ int main()
     	tpos = 0;
     	dotcount=0;
     	found=0;
+    	
     	for(j=0;line[j] != '~';j++) //pos of supertag in case of nested tags
     	{
 		if(line[j] == '.')
@@ -40,7 +41,6 @@ int main()
 			tpos = j+1;
 			dotcount++;
 		}
-    	
     	}
     	searchorder[dotcount]=line.substr(tpos,line.find('~')-tpos);
     	tag = "<" + searchorder[dotcount];
@@ -71,7 +71,6 @@ int main()
 									cout<<"Not Found!"<<endl;
 									found=1;
 									break;
-								
 								}
 							}
 							
@@ -80,7 +79,6 @@ int main()
 								cout<<"Not Found!"<<endl;
 								found=1;
 								break;
-								
 							}						
 						}
 					}
@@ -101,15 +99,11 @@ int main()
 		else
 		{
 			k--;  
-		}
-		 	
+		}	 	
     	}
     	if(found == 0)
     		cout<<"Not Found!"<<endl;
-	
     }
-    
-    
     return 0;
 }
 
