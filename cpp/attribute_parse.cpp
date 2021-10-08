@@ -8,8 +8,8 @@ using namespace std;
 
 
 int main() {
-    string tags[20], query[20],line,value,findval;
-    int n,q,i,j,tpos,vpos,quote,tagnum;
+    string tags[20], query[20],searchorder[20],line,value,findval,endtag,tag;
+    int n,q,i,j,k,tpos,vpos,dotcount,found,size;
     cin>>n>>q;
     for(i=0;i<n;i++)
     {
@@ -22,30 +22,62 @@ int main() {
     for(i=0;i<q;i++)
     {
     	line=query[i];
-    	vpos = line.find('~');
-    	value = line.substr(vpos+1); //value of the attribute to be found
+    	value = line.substr(line.find('~')+1); //value of the attribute to be found
     	tpos = 0;
+    	dotcount=0;
+    	size=0;
     	for(j=0;line[j] != '~';j++) //pos of supertag in case of nested tags
     	{
 		if(line[j] == '.')
+		{
+			searchorder[dotcount] = line.substr(tpos,j);
 			tpos = j+1;
+			dotcount++;
+		}
+		
     	
     	}
-	//tag = line.substr(tpos,vpos);
-	tagnum = stoi(line.substr(tpos+3,vpos)); //tag number
+    	searchorder[dotcount]=line.substr(tpos,line.find('~'));
+    	tag = "<" + searchorder[dotcount];
+    	for(j=0;j<=dotcount;j++)
+    	{
+    		endtag = "</" + searchorder[j] + ">";
+    		found=0;
+    		for(k=n-1;k>=0;k--)
+    		{
+    			if(tags[k].find(endtag) == 0) 
+    			{
+    				found = 1;
+    				size++;
+    			}
+    			if ((size <= dotcount) && (found = 1))
+    				break;
+    			if ((size > dotcount) && (found = 0))
+    			{
+    				cout<<"Not Found!"<<endl;
+    				break;
+    			}
+    			if ((size > dotcount) && (found = 1))
+    			{
+    				if(tags[k].find(tag)==0)
+    				{
+    					vpos = tags[k].find(value);
+    					if((vpos >= 0) && (vpos < tags[k].length()))
+    					{
+    						findval =tags[k].substr(vpos + value.length() + 4);
+    						cout<<findval.substr(0,findval.find("\""))<<endl;
+    						break;
+    					}
+    					else
+    					{
+    						cout<<"Not Found!"<<endl;
+    						break;
+    					}
+    				}
+    			}	
+    		}
+    	}
 	
-	line = tags[tagnum-1];
-	cout<<"query:"<<i<<" value:"<<value<<endl; 
-	if((line.find(value)>=0) && (line.find(value)<=line.length()))
-	{
-		findval = line.substr(line.find(value)+value.length()+4);
-		quote = findval.find('\"'); // position of closing quote of the attribute
-		cout<<"query:"<<i<<" value index:"<<line.find(value)<<endl;
-		cout<<findval.substr(0,quote)<<endl;
-		
-	}
-	else
-		cout<<"Not Found!"<<endl;
     }
     
     
