@@ -11,7 +11,7 @@ int main()
 {
 
     string tags[20], query[20],searchorder[20],line,value,tag,tagstack[20],findval,validarg;
-    int n,q,i,j,k,ts,tpos,vpos,dotcount;
+    int n,q,i,j,k,ts,tpos,vpos,dotcount,found;
     
     cin>>n>>q;
     
@@ -31,6 +31,7 @@ int main()
     	value = line.substr(line.find('~')+1); //value of the attribute to be found
     	tpos = 0;
     	dotcount=0;
+    	found=0;
     	for(j=0;line[j] != '~';j++) //pos of supertag in case of nested tags
     	{
 		if(line[j] == '.')
@@ -61,11 +62,13 @@ int main()
 								if(validarg == " " + value + " ")
 								{
 									cout<<findval.substr(0,findval.find("\""))<<endl;
+									found=1;
 									break;
 								}
 								else
 								{
 									cout<<"Not Found!"<<endl;
+									found=1;
 									break;
 								
 								}
@@ -74,6 +77,7 @@ int main()
 							else
 							{
 								cout<<"Not Found!"<<endl;
+								found=1;
 								break;
 								
 							}						
@@ -82,6 +86,7 @@ int main()
 				else
 				{
 					cout<<"Not Found!"<<endl;
+					found=1;
 					break;
 				}
 			}
@@ -98,6 +103,8 @@ int main()
 		}
 		 	
     	}
+    	if(found == 0)
+    		cout<<"Not Found!"<<endl;
 	
     }
     
